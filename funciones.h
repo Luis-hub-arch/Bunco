@@ -45,13 +45,13 @@ int BuscarMasGrande(int puntos[]);              // BUSCA EL VALOR MAXIMO DE LOS 
 
 int NombrePuntaje(int entero);                  // NOMBRA EL PUNTAJE EN LA INTERFAZ DE LOS JUGADORES
 
-void DibujarDados(int v[], int tam);
+void DibujarDados(int v[], int tam);            // DIBUJA LOS DADOS
 
 int Caras(int n);                               // DADO 1
 
 int Caras2(int n);                              // DADO 2
 
-int Caras3(int n);                               // DADO 3
+int Caras3(int n);                              // DADO 3
 
 
 /////////////////////////DEFINICION DE LAS FUNCIONES////////////////////////////////////////
@@ -100,6 +100,29 @@ void cargarAleatorio(int v[], int tam){
             v[i]=rand()%(6)+1;
         }
 }
+
+void cargarDados(int v[], int tam){
+    int i,y=10;
+        int j;
+    locate(40,9);printf("%c",201);
+    locate(40,13);printf("%c",200);
+    locate(75,9);printf("%c",187);
+    locate(75,13);printf("%c",188);
+        for(j=41;j<=74;j++){
+        locate(j,9);printf("%c",205);
+        locate(j,13);printf("%c",205);
+        }
+        for(j=10;j<=12;j++){
+        locate(40,j);printf("%c",186);
+        locate(75,j);printf("%c",186);
+        }
+    for(i=0;i<tam;i++){
+        locate(42,y);cout<<"INGRESE EL DADO N_"<<i+1<<": ";cin>>v[i];
+        y++;
+    }
+    system("cls");
+}
+
 void mostrarVector (int v[], int tam){
     int i;
     for(i=0;i<tam;i++){
@@ -121,6 +144,112 @@ void ordenarVector(int v[], int tam ){
 
 void ponerEnCero (int *a,int *b,int *c,int *d,int *e){
     *a=*b=*c=*d=*e=0;
+}
+
+void PuntuacionMaxima(int selec,char nombre1[],char nombre2[],int Buncos,int Buncos1,int Buncos2,int TotalPartida,int TotalPartida1,int TotalPartida2){
+        int j;
+    locate(40,9);printf("%c",201);
+    locate(40,13);printf("%c",200);
+    locate(75,9);printf("%c",187);
+    locate(75,13);printf("%c",188);
+        for(j=41;j<=74;j++){
+        locate(j,9);printf("%c",205);
+        locate(j,13);printf("%c",205);
+        }
+        for(j=10;j<=12;j++){
+        locate(40,j);printf("%c",186);
+        locate(75,j);printf("%c",186);
+        }
+    locate(41,11);cout << "ELIGA EL MODO DE JUEGO(1 o 2): ";cin>>selec;
+    system("cls");
+    switch(selec){
+
+        case 1:
+                locate(38,8);printf("%c",201);
+                locate(38,17);printf("%c",200);
+                locate(82,8);printf("%c",187);
+                locate(82,17);printf("%c",188);
+
+                for(j=39;j<=81;j++){
+                    locate(j,8);printf("%c",205);
+                    locate(j,17);printf("%c",205);
+                }
+                for(j=9;j<=16;j++){
+                    locate(38,j);printf("%c",186);
+                    locate(82,j);printf("%c",186);
+                }
+                locate(47,10);cout << "PUNTUACION MODO UN JUGADOR "<<endl;
+                locate(45,11);cout<<"------------------------------"<<endl;
+                locate(46,12);cout << "NOMBRE: " << nombre1 <<endl;
+                locate(46,13);cout << "PUNTUACION: " << TotalPartida << endl;
+                locate(46,14);cout << "BUNCOS: " << Buncos << endl;
+                    anykey();
+                    system("cls");
+            break;
+        case 2:
+                locate(38,8);printf("%c",201);
+                locate(38,15);printf("%c",200);
+                locate(76,8);printf("%c",187);
+                locate(76,15);printf("%c",188);
+
+                for(j=39;j<=75;j++){
+                    locate(j,8);printf("%c",205);
+                    locate(j,15);printf("%c",205);
+                }
+                for(j=9;j<=14;j++){
+                    locate(38,j);printf("%c",186);
+                    locate(76,j);printf("%c",186);
+                }
+                        if(TotalPartida1>TotalPartida2){
+                            locate(j,15);printf("%c",205);
+                }
+                for(j=9;j<=14;j++){
+                        locate(40,10);cout<<"NOMBRE: "<<nombre1<<endl;
+                        locate(40,11);cout<<"CANTIDAD DE BUNCOS: "<< Buncos1<<endl;
+                        locate(40,12);cout<<"PUNTAJE TOTAL ACUMULADO: "<<TotalPartida1<<endl;
+                        return;
+                        }
+                        if(TotalPartida2>TotalPartida1){
+                            cout<<"NOMBRE: "<<nombre2<<endl;
+                            cout<<"CANTIDAD DE BUNCOS: "<< Buncos2<<endl;
+                            cout<<"PUNTAJE TOTAL ACUMULADO: "<<TotalPartida2<<endl;
+                            return;
+                        }
+                        if(TotalPartida2==TotalPartida1){
+                            if(Buncos1>Buncos2){
+                                cout<<"NOMBRE: "<<nombre1<<endl;
+                                cout<<"CANTIDAD DE BUNCOS: "<< Buncos1<<endl;
+                                cout<<"PUNTAJE TOTAL ACUMULADO: "<<TotalPartida1<<endl;
+                                return;
+                            }
+                            else{
+                                if(Buncos2>Buncos1){
+                                    cout<<"NOMBRE: "<<nombre2<<endl;
+                                    cout<<"CANTIDAD DE BUNCOS: "<< Buncos2<<endl;
+                                    cout<<"PUNTAJE TOTAL ACUMULADO: "<<TotalPartida2<<endl;
+                                    return;
+                                }
+                            }
+                        }
+                        if(TotalPartida2==TotalPartida1&&Buncos1==Buncos2){
+                            cout<<"NOMBRE: "<<nombre1<<endl;
+                            cout<<"CANTIDAD DE BUNCOS: "<< Buncos1<<endl;
+                            cout<<"PUNTAJE TOTAL ACUMULADO: "<<TotalPartida1<<endl;
+                            cout<<"--------------------------------"<<endl;
+                            cout<<"NOMBRE: "<<nombre2<<endl;
+                            cout<<"CANTIDAD DE BUNCOS: "<< Buncos2<<endl;
+                            cout<<"PUNTAJE TOTAL ACUMULADO: "<<TotalPartida2<<endl;
+                            return;
+                        }
+                        anykey();
+                        system("cls");
+            break;
+
+        default: cout << "ERROR DE NUMERO";
+                anykey();
+                system("cls");
+            break;
+    }
 }
 
 /////////////////////////FUNCIONES DE ENTADA////////////////////////////////////////////////
@@ -225,33 +354,117 @@ void IngresoNombre2Jugadores(char nombre1[], char nombre2[]){
 }
 
 void InterfazRonda2Jug_N1(int i, char nombre2[],char nombre1[], int Buncos1, int Buncos2, int TotalPartida1, int TotalPartida2){
+    int j;
+    locate(40,7);printf("%c",201);
+    locate(40,16);printf("%c",200);
+    locate(75,7);printf("%c",187);
+    locate(75,16);printf("%c",188);
+        for(j=41;j<=74;j++){
+        locate(j,7);printf("%c",205);
+        locate(j,16);printf("%c",205);
+        }
+        for(j=8;j<=15;j++){
+        locate(40,j);printf("%c",186);
+        locate(75,j);printf("%c",186);
+        }
 
-        cout << "RONDA NUMERO: " << i << endl;
-        cout << "PROXIMO TURNO: " << nombre2 << endl;
-        cout << "---------------------------------------" << endl;
-        cout << "PUNTAJE " << nombre1 <<": "<< TotalPartida1 << " PUNTOS" << endl;
-        cout << "CANTIDAD DE BUNCOS: "<< Buncos1 <<endl;
-        cout << "---------------------------------------" << endl;
-        cout << "PUNTAJE "<<nombre2<<": " << TotalPartida2 << " PUNTOS" << endl;
-        cout << "CANTIDAD DE BUNCOS: "<< Buncos2 <<endl;
+        locate(47,8);cout << "RONDA NUMERO: " << i << endl;
+        locate(47,9);cout << "PROXIMO TURNO: " << nombre2 << endl;
+        locate(43,10);cout << "------------------------------" << endl;
+        locate(47,11);cout << "PUNTAJE " << nombre1 <<": "<< TotalPartida1 << " PUNTOS" << endl;
+        locate(47,12);cout << "CANTIDAD DE BUNCOS: "<< Buncos1 <<endl;
+        locate(43,13);cout << "------------------------------" << endl;
+        locate(47,14);cout << "PUNTAJE "<<nombre2<<": " << TotalPartida2 << " PUNTOS" << endl;
+        locate(47,15);cout << "CANTIDAD DE BUNCOS: "<< Buncos2 <<endl;
             anykey();
             system("cls");
 }
 
 void InterfazRonda2Jug_N2(int i, char nombre2[],char nombre1[], int Buncos1, int Buncos2, int TotalPartida1, int TotalPartida2){
 
-                cout << "RONDA NUMERO: " << i << endl;
-                cout << "PROXIMO TURNO: " << nombre1<< endl;
-                cout << "---------------------------------------" << endl;
-                cout << "PUNTAJE " << nombre2 <<": "<< TotalPartida2 << " PUNTOS" << endl;
-                cout << "CANTIDAD DE BUNCOS: "<< Buncos2 <<endl;
-                cout << "---------------------------------------" << endl;
-                cout << "PUNTAJE "<<nombre1<<": " << TotalPartida1 << " PUNTOS" << endl;
-                cout << "CANTIDAD DE BUNCOS: "<< Buncos1 <<endl;
+    int j;
+    locate(40,7);printf("%c",201);
+    locate(40,16);printf("%c",200);
+    locate(75,7);printf("%c",187);
+    locate(75,16);printf("%c",188);
+        for(j=41;j<=74;j++){
+        locate(j,7);printf("%c",205);
+        locate(j,16);printf("%c",205);
+        }
+        for(j=8;j<=15;j++){
+        locate(40,j);printf("%c",186);
+        locate(75,j);printf("%c",186);
+        }
+                locate(47,8);cout << "RONDA NUMERO: " << i << endl;
+                locate(47,9);cout << "PROXIMO TURNO: " << nombre1<< endl;
+                locate(43,10);cout << "------------------------------" << endl;
+                locate(47,11);cout << "PUNTAJE " << nombre2 <<": "<< TotalPartida2 << " PUNTOS" << endl;
+                locate(47,12);cout << "CANTIDAD DE BUNCOS: "<< Buncos2 <<endl;
+                locate(43,13);cout << "------------------------------" << endl;
+                locate(47,14);cout << "PUNTAJE "<<nombre1<<": " << TotalPartida1 << " PUNTOS" << endl;
+                locate(47,15);cout << "CANTIDAD DE BUNCOS: "<< Buncos1 <<endl;
                     anykey();
                     system("cls");
 }
 
+void Fin_Partida(char nombre1[], char nombre2[], int TotalPartida1,int TotalPartida2, int Buncos1, int Buncos2){
+
+            int j;
+            locate(40,7);printf("%c",201);
+            locate(40,15);printf("%c",200);
+            locate(75,7);printf("%c",187);
+            locate(75,15);printf("%c",188);
+                for(j=41;j<=74;j++){
+                locate(j,7);printf("%c",205);
+                locate(j,15);printf("%c",205);
+                }
+                for(j=8;j<=14;j++){
+                locate(40,j);printf("%c",186);
+                locate(75,j);printf("%c",186);
+                }
+
+                        if(TotalPartida1>TotalPartida2){
+                            locate(49,9);cout<<"FINAL DE LA PARTIDA"<<endl;
+                            locate(43,10);cout<<"------------------------------"<<endl;
+                            locate(43,11);cout<<"GANADOR: "<<nombre1<<endl;
+                            locate(43,12);cout<<"CANTIDAD DE BUNCOS: "<< Buncos1<<endl;
+                            locate(43,13);cout<<"PUNTAJE TOTAL ACUMULADO: "<<TotalPartida1<<endl;
+                        }
+                        if(TotalPartida2>TotalPartida1){
+                            locate(49,9);cout<<"FINAL DE LA PARTIDA"<<endl;
+                            locate(43,10);cout<<"------------------------------"<<endl;
+                            locate(43,11);cout<<"GANADOR: "<<nombre2<<endl;
+                            locate(43,12);cout<<"CANTIDAD DE BUNCOS: "<< Buncos2<<endl;
+                            locate(43,13);cout<<"PUNTAJE TOTAL ACUMULADO: "<<TotalPartida2<<endl;
+                        }
+                        if(TotalPartida2==TotalPartida1){
+                            if(Buncos1>Buncos2){
+                                locate(49,9);cout<<"FINAL DE LA PARTIDA"<<endl;
+                                locate(43,10);cout<<"------------------------------"<<endl;
+                                locate(43,11);cout<<"GANADOR: "<<nombre1<<endl;
+                                locate(43,12);cout<<"CANTIDAD DE BUNCOS: "<< Buncos1<<endl;
+                                locate(43,13);cout<<"PUNTAJE TOTAL ACUMULADO: "<<TotalPartida1<<endl;
+                            }
+                            else{
+                                if(Buncos2>Buncos1){
+                                    locate(49,9);cout<<"FINAL DE LA PARTIDA"<<endl;
+                                    locate(43,10);cout<<"------------------------------"<<endl;
+                                    locate(43,11); cout<<"GANADOR: "<<nombre2<<endl;
+                                    locate(43,12); cout<<"CANTIDAD DE BUNCOS: "<< Buncos2<<endl;
+                                    locate(43,13);cout<<"PUNTAJE TOTAL ACUMULADO: "<<TotalPartida2<<endl;
+                                }
+                            }
+                        }
+                        if(TotalPartida2==TotalPartida1&&Buncos1==Buncos2){
+                            locate(49,9);cout<<"FINAL DE LA PARTIDA"<<endl;
+                            locate(43,10);cout<<"------------------------------"<<endl;
+                            locate(43,11);cout<<"EMPATE"<<endl;
+                            locate(43,12);cout<<"AMBOS JUGADORES TIENEN LA MISMA"<<endl;
+                            locate(43,13);cout<<"CANTIDAD DE PUNTOS Y BUNCOS"<<endl;
+                        }
+                            anykey();
+                            system("cls");
+}
 
 /////////////////////////SIMPLIFICACION DEL MODO 1 Y 2 JUGADORES//////////////////////////////////
 
